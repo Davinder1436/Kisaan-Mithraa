@@ -1,6 +1,7 @@
 import os
 import json
 import httpx
+import logging
 import uvicorn
 from fastapi import FastAPI, HTTPException, Request, Depends
 from fastapi.middleware.cors import CORSMiddleware
@@ -9,20 +10,44 @@ from pydantic import BaseModel
 from typing import Optional, List, Dict, Any
 from dotenv import load_dotenv
 from datetime import datetime
-
+ 
 from app.services.language_service import LanguageService
 from app.services.navigation_service import NavigationService
 from app.services.user_memory_service import UserMemoryService
-from app.models.user_models import UserProfile, UserMessage
+from app.services.claude_service import ClaudeService
 
-# Load environment variables
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler("app.log"),
+        logging.StreamHandler()
+    ]
+)
+
+# Create logger
+logger = logging.getLogger(__name__)
+
+# Log startup message
+logger.info("Starting CropConnect Chatbot API")
+
+# Load environment variables and log success/failure
 load_dotenv()
+logger.info(f"Environment variables loaded. ANTHROPIC_API_KEY present: {'Yes' if os.getenv('ANTHROPIC_API_KEY') else 'No'}")
 
 # Configure settings
 ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
 CLAUDE_MODEL = os.getenv("CLAUDE_MODEL", "claude-3-opus-20240229")
 CLAUDE_MAX_TOKENS = int(os.getenv("CLAUDE_MAX_TOKENS", "1000"))
 CLAUDE_TEMPERATURE = float(os.getenv("CLAUDE_TEMPERATURE", "0.7"))
+
+# Log configuration
+logger.info(f"Using Claude model: {CLAUDE_MODEL}")
+logger.info(f"Max tokens: {CLAUDE_MAX_TOKENS}")
+logger.info(f"Temperature: {CLAUDE_TEMPERATURE}")
+
+# Rest of your imports and code follows...
 
 # Initialize FastAPI app
 app = FastAPI(
@@ -75,15 +100,21 @@ except Exception as e:
 async def root():
     return {"message": "Welcome to CropConnect Chatbot API with User Memory"}
 
+
 @app.post("/api/v1/chat", response_model=ChatResponse)
 async def chat(request: ChatRequest):
     """
     Process a chat message and return a response with user memory and profile tags
-    Using a two-step approach for more reliable parsing with fixed navigation
+    Using a true two-step approach for message and tags
     """
     try:
+        # Log incoming request (without exposing full message)
+        logger.info(f"Chat request received - User ID: {request.user_id}, Language: {request.language}")
+        logger.debug(f"Message: '{request.message}'")
+        
         # Detect source language
         source_language = language_service.detect_language(request.message)
+        logger.info(f"Detected source language: {source_language}")
         
         # Get user profile and chat history if user_id is provided
         user_context = []
@@ -92,9 +123,11 @@ async def chat(request: ChatRequest):
         if request.user_id:
             # Get recent chat history
             user_context = user_memory_service.get_recent_chat_context(request.user_id)
+            logger.info(f"Retrieved {len(user_context)} previous messages for context")
             
             # Get current profile for the user
             user_profile = user_memory_service.get_user_profile(request.user_id)
+            logger.info(f"Retrieved user profile for {request.user_id}")
             
             # Store user message in history
             user_memory_service.add_message_to_history(
@@ -102,6 +135,7 @@ async def chat(request: ChatRequest):
                 "user", 
                 request.message
             )
+            logger.info("Added user message to history")
             
             # Analyze message for new profile tags
             new_tags = user_memory_service.analyze_message_for_tags(
@@ -111,58 +145,43 @@ async def chat(request: ChatRequest):
             
             # Update user profile with new tags
             if new_tags:
+                logger.info(f"Detected {len(new_tags)} new profile tags")
                 user_memory_service.update_profile_tags(request.user_id, new_tags)
         
-        # STEP 1: Generate the main response message
-        message_prompt = create_message_prompt(
-            request.language, 
-            APP_CONTEXT, 
-            user_context, 
-            request.user_id
-        )
+        # Use the ClaudeService with the true two-step approach
+        claude_service = ClaudeService()
         
-        # Make first API call to get the main message
-        message_response = await get_claude_response(
+        # Generate both message and tags
+        message_response, tags = await claude_service.generate_farming_response(
             request.message,
-            message_prompt,
-            CLAUDE_MODEL,
-            CLAUDE_MAX_TOKENS,
-            CLAUDE_TEMPERATURE
-        )
-        
-        # STEP 2: Generate the tags in a separate call for reliability
-        tags_prompt = create_tags_prompt(
             request.language,
-            message_response
+            APP_CONTEXT,
+            chat_history=user_context
         )
         
-        # Make second API call to get just the tags
-        tags_response = await get_claude_response(
-            request.message,
-            tags_prompt,
-            CLAUDE_MODEL,
-            500,  # Fewer tokens needed for tags
-            0.2    # Lower temperature for more consistent tags
-        )
-        
-        # Parse the tags from the response
-        tags = parse_tags_from_response(tags_response)
+        # Log the response details
+        logger.info("Received two-step response from Claude API")
+        logger.debug(f"Message: '{message_response[:50]}...'")
+        logger.debug(f"Tags: {json.dumps(tags)}")
         
         # Store assistant response in user history if user_id is provided
-        if request.user_id:
+        if request.user_id and not message_response.startswith("Error:"):
             user_memory_service.add_message_to_history(
                 request.user_id, 
                 "assistant", 
                 message_response
             )
+            logger.info("Added assistant response to user history")
             
             # Update user profile with inferred tags from response
             inferred_tags = infer_tags_from_response(tags)
             if inferred_tags:
+                logger.info(f"Inferred {len(inferred_tags)} tags from response")
                 user_memory_service.update_profile_tags(request.user_id, inferred_tags)
             
             # Get representative tags for this user (only high-confidence ones)
             user_tags = user_memory_service.select_representative_tags(request.user_id)
+            logger.info(f"Selected {len(user_tags)} representative tags for user")
         
         # Fixed navigation options as requested
         navigations = ["/podcasts", "/community"]
@@ -177,13 +196,18 @@ async def chat(request: ChatRequest):
             profile_tags=user_tags
         )
         
+        logger.info("Successfully created chat response")
         return response
     except Exception as e:
-        print(f"Error processing request: {e}")
+        error_msg = f"Error processing request: {str(e)}"
+        logger.error(error_msg)
+        import traceback
+        logger.error(f"Traceback: {traceback.format_exc()}")
         return JSONResponse(
             status_code=500,
-            content={"error": f"Error processing request: {str(e)}"}
+            content={"error": error_msg}
         )
+
 
 async def get_claude_response(
     message: str,
@@ -889,6 +913,80 @@ def infer_tags_from_response(response_tags: Dict[str, Any]) -> Dict[str, Dict[st
             }
     
     return inferred_tags
+
+
+# In main.py, modify your chat endpoint to include this function for direct extraction
+
+def extract_message_and_tags(response_text):
+    """
+    Directly extract message and tags from Claude's response
+    """
+    try:
+        # Clean up the response text first
+        response_text = response_text.strip()
+        
+        # Find JSON in the response
+        json_start = response_text.find('{')
+        json_end = response_text.rfind('}') + 1
+        
+        # Initialize default values
+        message = response_text
+        tags = {
+            "crops": [],
+            "city": None,
+            "topics": [],
+            "issues": [],
+            "seasons": []
+        }
+        
+        # If we found JSON and it's a valid JSON string
+        if json_start >= 0 and json_end > json_start:
+            # Extract the JSON string
+            json_str = response_text[json_start:json_end]
+            
+            try:
+                # Parse the JSON
+                parsed_json = json.loads(json_str)
+                
+                # If it has both message and tags
+                if "message" in parsed_json and "tags" in parsed_json:
+                    # Extract message and tags
+                    message = parsed_json["message"]
+                    tags = parsed_json["tags"]
+                    
+                    # Ensure tags have the expected structure
+                    for key in ["crops", "topics", "issues", "seasons"]:
+                        if key not in tags:
+                            tags[key] = []
+                        elif tags[key] is None:
+                            tags[key] = []
+                    
+                    if "city" not in tags:
+                        tags["city"] = None
+                        
+                    logger.info("Successfully extracted message and tags from JSON response")
+                else:
+                    logger.warning("JSON doesn't have both 'message' and 'tags' keys")
+            except json.JSONDecodeError:
+                logger.error("Failed to parse JSON from response")
+                
+        return message, tags
+        
+    except Exception as e:
+        logger.error(f"Error extracting message and tags: {str(e)}")
+        return response_text, {
+            "crops": [],
+            "city": None,
+            "topics": [],
+            "issues": [],
+            "seasons": []
+        }
+
+
+
+
+
+
 if __name__ == "__main__":
     host = os.getenv("APP_HOST", "0.0.0.0")
     port = int(os.getenv("APP_PORT", "8000"))

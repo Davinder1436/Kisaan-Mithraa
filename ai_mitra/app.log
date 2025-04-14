@@ -1,0 +1,156 @@
+2025-04-15 03:17:46,495 - __mp_main__ - INFO - Starting CropConnect Chatbot API
+2025-04-15 03:17:46,497 - __mp_main__ - INFO - Environment variables loaded. ANTHROPIC_API_KEY present: Yes
+2025-04-15 03:17:46,497 - __mp_main__ - INFO - Using Claude model: claude-3-opus-20240229
+2025-04-15 03:17:46,497 - __mp_main__ - INFO - Max tokens: 1000
+2025-04-15 03:17:46,497 - __mp_main__ - INFO - Temperature: 0.7
+2025-04-15 03:31:52,698 - app.main - INFO - Starting CropConnect Chatbot API
+2025-04-15 03:31:52,699 - app.main - INFO - Environment variables loaded. ANTHROPIC_API_KEY present: Yes
+2025-04-15 03:31:52,699 - app.main - INFO - Using Claude model: claude-3-opus-20240229
+2025-04-15 03:31:52,699 - app.main - INFO - Max tokens: 1000
+2025-04-15 03:31:52,700 - app.main - INFO - Temperature: 0.7
+2025-04-15 03:32:20,571 - app.main - INFO - Starting CropConnect Chatbot API
+2025-04-15 03:32:20,573 - app.main - INFO - Environment variables loaded. ANTHROPIC_API_KEY present: Yes
+2025-04-15 03:32:20,573 - app.main - INFO - Using Claude model: claude-3-opus-20240229
+2025-04-15 03:32:20,573 - app.main - INFO - Max tokens: 1000
+2025-04-15 03:32:20,573 - app.main - INFO - Temperature: 0.7
+2025-04-15 03:35:15,585 - app.main - INFO - Starting CropConnect Chatbot API
+2025-04-15 03:35:15,587 - app.main - INFO - Environment variables loaded. ANTHROPIC_API_KEY present: Yes
+2025-04-15 03:35:15,587 - app.main - INFO - Using Claude model: claude-3-opus-20240229
+2025-04-15 03:35:15,587 - app.main - INFO - Max tokens: 1000
+2025-04-15 03:35:15,587 - app.main - INFO - Temperature: 0.7
+2025-04-15 03:35:32,612 - app.main - INFO - Chat request received - User ID: user123, Language: hi
+2025-04-15 03:35:32,612 - app.main - INFO - Message length: 40 chars
+2025-04-15 03:35:33,050 - app.main - INFO - Detected source language: en
+2025-04-15 03:35:33,051 - app.main - INFO - Retrieved 5 previous messages for context
+2025-04-15 03:35:33,051 - app.main - INFO - Retrieved user profile for user123
+2025-04-15 03:35:33,053 - app.main - INFO - Added user message to history
+2025-04-15 03:35:33,053 - app.main - INFO - Detected 1 new profile tags
+2025-04-15 03:35:33,055 - app.services.claude_service - INFO - ClaudeService initialized with API key (length: 108)
+2025-04-15 03:35:33,106 - app.services.claude_service - INFO - Making API call to Claude with model claude-3-opus-20240229
+2025-04-15 03:35:59,039 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-04-15 03:35:59,040 - app.services.claude_service - INFO - Claude API response status: 200
+2025-04-15 03:35:59,041 - app.services.claude_service - WARNING - Response is not valid JSON, using as plain text
+2025-04-15 03:35:59,041 - app.main - INFO - Received response from Claude API
+2025-04-15 03:35:59,043 - app.main - INFO - Added assistant response to user history
+2025-04-15 03:35:59,049 - app.main - INFO - Selected 5 representative tags for user
+2025-04-15 03:35:59,049 - app.main - INFO - Successfully created chat response
+2025-04-15 03:53:11,407 - app.main - INFO - Starting CropConnect Chatbot API
+2025-04-15 03:53:11,409 - app.main - INFO - Environment variables loaded. ANTHROPIC_API_KEY present: Yes
+2025-04-15 03:53:11,409 - app.main - INFO - Using Claude model: claude-3-opus-20240229
+2025-04-15 03:53:11,409 - app.main - INFO - Max tokens: 1000
+2025-04-15 03:53:11,409 - app.main - INFO - Temperature: 0.7
+2025-04-15 03:53:15,195 - app.main - INFO - Chat request received - User ID: user123, Language: hi
+2025-04-15 03:53:15,195 - app.main - INFO - Message length: 40 chars
+2025-04-15 03:53:15,628 - app.main - INFO - Detected source language: en
+2025-04-15 03:53:15,629 - app.main - INFO - Retrieved 5 previous messages for context
+2025-04-15 03:53:15,630 - app.main - INFO - Retrieved user profile for user123
+2025-04-15 03:53:15,631 - app.main - INFO - Added user message to history
+2025-04-15 03:53:15,632 - app.main - INFO - Detected 1 new profile tags
+2025-04-15 03:53:15,638 - app.services.claude_service - INFO - ClaudeService initialized with API key (length: 108)
+2025-04-15 03:53:15,691 - app.services.claude_service - INFO - Making API call to Claude with model claude-3-opus-20240229
+2025-04-15 03:53:41,762 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-04-15 03:53:41,764 - app.services.claude_service - INFO - Claude API response status: 200
+2025-04-15 03:53:41,764 - app.services.claude_service - WARNING - Response is not valid JSON, using as plain text
+2025-04-15 03:53:41,764 - app.main - INFO - Received two-step response from Claude API
+2025-04-15 03:53:41,766 - app.main - INFO - Added assistant response to user history
+2025-04-15 03:53:41,773 - app.main - INFO - Selected 5 representative tags for user
+2025-04-15 03:53:41,773 - app.main - INFO - Successfully created chat response
+2025-04-15 04:09:16,052 - app.main - INFO - Chat request received - User ID: user123, Language: hi
+2025-04-15 04:09:16,053 - app.main - INFO - Message length: 40 chars
+2025-04-15 04:09:16,057 - app.main - INFO - Detected source language: en
+2025-04-15 04:09:16,058 - app.main - INFO - Retrieved 5 previous messages for context
+2025-04-15 04:09:16,059 - app.main - INFO - Retrieved user profile for user123
+2025-04-15 04:09:16,062 - app.main - INFO - Added user message to history
+2025-04-15 04:09:16,062 - app.main - INFO - Detected 1 new profile tags
+2025-04-15 04:09:16,068 - app.services.claude_service - INFO - ClaudeService initialized with API key (length: 108)
+2025-04-15 04:09:16,148 - app.services.claude_service - INFO - Making API call to Claude with model claude-3-opus-20240229
+2025-04-15 04:09:41,726 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-04-15 04:09:41,728 - app.services.claude_service - INFO - Claude API response status: 200
+2025-04-15 04:09:41,729 - app.services.claude_service - WARNING - Response is not valid JSON, using as plain text
+2025-04-15 04:09:41,729 - app.main - INFO - Received two-step response from Claude API
+2025-04-15 04:09:41,738 - app.main - INFO - Added assistant response to user history
+2025-04-15 04:09:41,747 - app.main - INFO - Selected 5 representative tags for user
+2025-04-15 04:09:41,747 - app.main - INFO - Successfully created chat response
+2025-04-15 04:13:45,857 - app.main - INFO - Starting CropConnect Chatbot API
+2025-04-15 04:13:45,859 - app.main - INFO - Environment variables loaded. ANTHROPIC_API_KEY present: Yes
+2025-04-15 04:13:45,859 - app.main - INFO - Using Claude model: claude-3-opus-20240229
+2025-04-15 04:13:45,860 - app.main - INFO - Max tokens: 1000
+2025-04-15 04:13:45,860 - app.main - INFO - Temperature: 0.7
+2025-04-15 04:14:43,551 - app.main - INFO - Chat request received - User ID: user123, Language: hi
+2025-04-15 04:14:43,551 - app.main - INFO - Message length: 40 chars
+2025-04-15 04:14:44,159 - app.main - INFO - Detected source language: en
+2025-04-15 04:14:44,160 - app.main - INFO - Retrieved 5 previous messages for context
+2025-04-15 04:14:44,161 - app.main - INFO - Retrieved user profile for user123
+2025-04-15 04:14:44,164 - app.main - INFO - Added user message to history
+2025-04-15 04:14:44,165 - app.main - INFO - Detected 1 new profile tags
+2025-04-15 04:14:44,171 - app.services.claude_service - INFO - ClaudeService initialized with API key (length: 108)
+2025-04-15 04:14:44,249 - app.services.claude_service - INFO - Making API call to Claude with model claude-3-opus-20240229
+2025-04-15 04:15:05,032 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-04-15 04:15:05,035 - app.services.claude_service - INFO - Claude API response status: 200
+2025-04-15 04:15:05,036 - app.services.claude_service - WARNING - Response is not valid JSON, using as plain text
+2025-04-15 04:15:05,036 - app.main - INFO - Received response from Claude API
+2025-04-15 04:15:05,036 - app.main - INFO - Message starts with: {
+    "message": "हरियाणा में उगाने के लिए सबसे अच...
+2025-04-15 04:15:05,036 - app.main - INFO - Tags received: {"crops": [], "city": null, "topics": [], "issues": [], "seasons": []}
+2025-04-15 04:15:05,040 - app.main - INFO - Added assistant response to user history
+2025-04-15 04:15:05,046 - app.main - INFO - Selected 5 representative tags for user
+2025-04-15 04:15:05,046 - app.main - INFO - Successfully created chat response
+2025-04-15 04:37:25,124 - app.main - INFO - Starting CropConnect Chatbot API
+2025-04-15 04:37:25,125 - app.main - INFO - Environment variables loaded. ANTHROPIC_API_KEY present: Yes
+2025-04-15 04:37:25,125 - app.main - INFO - Using Claude model: claude-3-opus-20240229
+2025-04-15 04:37:25,125 - app.main - INFO - Max tokens: 1000
+2025-04-15 04:37:25,125 - app.main - INFO - Temperature: 0.7
+2025-04-15 04:38:07,399 - app.main - INFO - Chat request received - User ID: user123, Language: hi
+2025-04-15 04:38:07,633 - app.main - INFO - Detected source language: en
+2025-04-15 04:38:07,634 - app.main - INFO - Retrieved 5 previous messages for context
+2025-04-15 04:38:07,634 - app.main - INFO - Retrieved user profile for user123
+2025-04-15 04:38:07,635 - app.main - INFO - Added user message to history
+2025-04-15 04:38:07,636 - app.main - INFO - Detected 1 new profile tags
+2025-04-15 04:38:07,641 - app.services.claude_service - INFO - ClaudeService initialized with API key (length: 108)
+2025-04-15 04:38:07,666 - app.services.claude_service - INFO - Making API call to Claude with model claude-3-opus-20240229
+2025-04-15 04:38:31,885 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-04-15 04:38:31,886 - app.services.claude_service - INFO - Claude API response status: 200
+2025-04-15 04:38:31,887 - app.services.claude_service - WARNING - Response is not valid JSON, using as plain text
+2025-04-15 04:38:31,887 - app.main - INFO - Received two-step response from Claude API
+2025-04-15 04:38:31,888 - app.main - INFO - Added assistant response to user history
+2025-04-15 04:38:31,894 - app.main - INFO - Selected 5 representative tags for user
+2025-04-15 04:38:31,894 - app.main - INFO - Successfully created chat response
+2025-04-15 04:41:23,620 - app.main - INFO - Starting CropConnect Chatbot API
+2025-04-15 04:41:23,620 - app.main - INFO - Environment variables loaded. ANTHROPIC_API_KEY present: Yes
+2025-04-15 04:41:23,620 - app.main - INFO - Using Claude model: claude-3-opus-20240229
+2025-04-15 04:41:23,620 - app.main - INFO - Max tokens: 1000
+2025-04-15 04:41:23,620 - app.main - INFO - Temperature: 0.7
+2025-04-15 04:41:46,430 - app.main - INFO - Chat request received - User ID: user123, Language: hi
+2025-04-15 04:41:46,430 - app.main - INFO - Message length: 40 chars
+2025-04-15 04:41:46,656 - app.main - INFO - Detected source language: en
+2025-04-15 04:41:46,657 - app.main - INFO - Retrieved 5 previous messages for context
+2025-04-15 04:41:46,657 - app.main - INFO - Retrieved user profile for user123
+2025-04-15 04:41:46,658 - app.main - INFO - Added user message to history
+2025-04-15 04:41:46,658 - app.main - INFO - Detected 1 new profile tags
+2025-04-15 04:42:03,650 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-04-15 04:42:03,651 - app.main - INFO - Received response from Claude API
+2025-04-15 04:42:03,651 - app.main - INFO - Extracted message (first 50 chars): Based on your profile as a multi-crop farmer in th...
+2025-04-15 04:42:03,651 - app.main - INFO - Extracted tags: {"crops": [], "city": null, "topics": [], "issues": [], "seasons": []}
+2025-04-15 04:42:03,653 - app.main - INFO - Added assistant response to user history
+2025-04-15 04:42:03,659 - app.main - INFO - Selected 5 representative tags for user
+2025-04-15 04:42:03,659 - app.main - INFO - Successfully created chat response
+2025-04-15 04:42:37,837 - app.main - INFO - Starting CropConnect Chatbot API
+2025-04-15 04:42:37,837 - app.main - INFO - Environment variables loaded. ANTHROPIC_API_KEY present: Yes
+2025-04-15 04:42:37,837 - app.main - INFO - Using Claude model: claude-3-opus-20240229
+2025-04-15 04:42:37,837 - app.main - INFO - Max tokens: 1000
+2025-04-15 04:42:37,837 - app.main - INFO - Temperature: 0.7
+2025-04-15 04:42:40,717 - app.main - INFO - Chat request received - User ID: user123, Language: hi
+2025-04-15 04:42:40,950 - app.main - INFO - Detected source language: en
+2025-04-15 04:42:40,950 - app.main - INFO - Retrieved 5 previous messages for context
+2025-04-15 04:42:40,951 - app.main - INFO - Retrieved user profile for user123
+2025-04-15 04:42:40,952 - app.main - INFO - Added user message to history
+2025-04-15 04:42:40,952 - app.main - INFO - Detected 1 new profile tags
+2025-04-15 04:42:40,957 - app.services.claude_service - INFO - ClaudeService initialized with API key (length: 108)
+2025-04-15 04:42:40,984 - app.services.claude_service - INFO - Making API call to Claude with model claude-3-opus-20240229
+2025-04-15 04:43:02,019 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-04-15 04:43:02,020 - app.services.claude_service - INFO - Claude API response status: 200
+2025-04-15 04:43:02,020 - app.services.claude_service - WARNING - Response is not valid JSON, using as plain text
+2025-04-15 04:43:02,020 - app.main - INFO - Received two-step response from Claude API
+2025-04-15 04:43:02,022 - app.main - INFO - Added assistant response to user history
+2025-04-15 04:43:02,028 - app.main - INFO - Selected 5 representative tags for user
+2025-04-15 04:43:02,028 - app.main - INFO - Successfully created chat response
