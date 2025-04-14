@@ -1,0 +1,230 @@
+{
+    "farmer_types": [
+      "small_farmer",
+      "marginal_farmer",
+      "medium_farmer",
+      "large_farmer",
+      "tenant_farmer",
+      "organic_farmer",
+      "commercial_farmer",
+      "subsistence_farmer",
+      "progressive_farmer",
+      "contract_farmer",
+      "tribal_farmer",
+      "women_farmer"
+    ],
+    
+    "income_levels": [
+      "low_income",
+      "below_average_income",
+      "average_income",
+      "above_average_income",
+      "high_income"
+    ],
+    
+    "farming_regions": [
+      "northern_plains",
+      "gangetic_plains",
+      "eastern_region",
+      "northeast_region",
+      "central_highlands",
+      "western_ghats",
+      "eastern_ghats",
+      "coastal_region",
+      "arid_region",
+      "himalayan_region",
+      "deccan_plateau",
+      "indo-gangetic_plains"
+    ],
+    
+    "climate_zones": [
+      "tropical_wet",
+      "tropical_dry",
+      "subtropical_humid",
+      "subtropical_dry",
+      "temperate",
+      "alpine",
+      "arid",
+      "semi_arid"
+    ],
+    
+    "major_crops": [
+      "rice",
+      "wheat",
+      "maize",
+      "millets",
+      "pulses",
+      "oilseeds",
+      "cotton",
+      "sugarcane",
+      "jute",
+      "tea",
+      "coffee",
+      "spices",
+      "fruits",
+      "vegetables",
+      "flowers"
+    ],
+    
+    "farming_approaches": [
+      "traditional",
+      "conventional",
+      "organic",
+      "natural",
+      "integrated",
+      "precision",
+      "conservation",
+      "sustainable",
+      "regenerative",
+      "hydroponics",
+      "zero_budget_natural_farming",
+      "permaculture"
+    ],
+    
+    "technology_adoption": [
+      "tech_resistant",
+      "tech_curious",
+      "tech_adopter",
+      "tech_savvy",
+      "tech_innovator"
+    ],
+    
+    "irrigation_methods": [
+      "rainfed",
+      "canal",
+      "tube_well",
+      "drip",
+      "sprinkler",
+      "flood",
+      "lift",
+      "tank",
+      "well",
+      "pond"
+    ],
+    
+    "equipment_usage": [
+      "manual_tools",
+      "bullock_powered",
+      "small_machinery",
+      "tractor_owner",
+      "machinery_renter",
+      "high_tech_equipment",
+      "custom_hiring",
+      "shared_equipment"
+    ],
+    
+    "education_levels": [
+      "no_formal_education",
+      "primary_education",
+      "secondary_education",
+      "college_education",
+      "agricultural_diploma",
+      "agricultural_degree"
+    ],
+    
+    "market_access": [
+      "local_market",
+      "mandi_seller",
+      "cooperative_member",
+      "contract_farming",
+      "direct_to_consumer",
+      "export_oriented",
+      "e-trading",
+      "fpo_member"
+    ],
+    
+    "financial_access": [
+      "self_financed",
+      "informal_lender",
+      "bank_access",
+      "kcc_holder",
+      "microfinance",
+      "subsidy_recipient",
+      "insurance_user"
+    ],
+    
+    "language_preference": [
+      "hindi",
+      "english",
+      "punjabi",
+      "marathi",
+      "gujarati",
+      "tamil",
+      "telugu",
+      "bengali",
+      "kannada",
+      "malayalam",
+      "odia",
+      "assamese"
+    ],
+    
+    "personality_traits": [
+      "risk_averse",
+      "risk_taker",
+      "innovative",
+      "traditional",
+      "collaborative",
+      "independent",
+      "detail_oriented",
+      "big_picture",
+      "analytical",
+      "intuitive",
+      "environmentally_conscious",
+      "profit_focused",
+      "community_oriented"
+    ],
+    
+    "information_seeking": [
+      "passive_receiver",
+      "active_seeker",
+      "peer_learner",
+      "expert_consulter",
+      "experimental_learner",
+      "digital_researcher"
+    ],
+    
+    "crop_cycle_focus": [
+      "single_crop",
+      "double_crop",
+      "multi_crop",
+      "perennial_crop",
+      "seasonal_rotation",
+      "intercropping"
+    ],
+    
+    "farming_challenges": [
+      "water_scarcity",
+      "soil_health",
+      "pest_management",
+      "climate_variability",
+      "market_access",
+      "price_fluctuation",
+      "labor_shortage",
+      "input_costs",
+      "storage_facilities",
+      "transportation",
+      "technology_access",
+      "credit_availability"
+    ],
+    
+    "decision_drivers": [
+      "tradition_driven",
+      "market_driven",
+      "climate_driven",
+      "resource_driven",
+      "community_influenced",
+      "expert_guided",
+      "policy_responsive",
+      "data_driven"
+    ],
+    
+    "social_status": [
+      "village_leader",
+      "community_influencer",
+      "cooperative_member",
+      "government_connected",
+      "socially_marginalized",
+      "politically_active",
+      "industry_networked"
+    ]
+  }
